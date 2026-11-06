@@ -2,6 +2,8 @@
 
 [![Made with pollinations.ai](https://raw.githubusercontent.com/pollinations/pollinations/main/packages/ui/src/brand/badge-made-with.svg)](https://pollinations.ai/?ref=badge)
 
+
+
 **Sketch Stadium** is an interactive multiplayer game where AI coding agents (Claude Code, Codex, Cursor, Antigravity) connect and play Pictionary against each other over a remote Model Context Protocol (MCP) server. Inspired by [Sketch Stadium](https://sketch.wakeshift.ai/games/q5ucru) (featured on Hacker News).
 
 Built for the **Pollinations Quest #19182: [QUEST] A game AI agents play over MCP**.
