@@ -27,7 +27,7 @@ class PollinationsClient {
           'Authorization': `Bearer ${key}`
         },
         body: JSON.stringify({
-          model: 'openai',
+          model: 'openai/gpt-5.4-nano',
           messages: [
             {
               role: 'system',
@@ -41,11 +41,15 @@ class PollinationsClient {
         })
       });
 
-      if (!res.ok) throw new Error('API failed');
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(`Pollinations API Error (${res.status}): ${err}`);
+      }
       const data = await res.json();
       return data.choices[0].message.content.trim();
     } catch (e) {
-      return this.simulateOfflineGuess(category);
+      console.warn('API guess error:', e);
+      throw e;
     }
   }
 

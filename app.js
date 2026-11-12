@@ -72,10 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
   btnSimulateGuess.addEventListener('click', async () => {
     const agents = ['Codex-Bot', 'Claude-Code-MCP', 'Llama-Agent', 'Mistral-Solver'];
     const ag = agents[Math.floor(Math.random() * agents.length)];
-    const guess = await client.agentGuess([], 'ASTRONOMY');
-    const isWin = guess.toLowerCase().includes('saturn');
-    appendGuess(ag, isWin ? `CORRECT! "${guess}" (+100 pts)` : guess, isWin);
+    try {
+      const guess = await client.agentGuess([], 'ASTRONOMY');
+      const isWin = guess.toLowerCase().includes('saturn');
+      appendGuess(ag, isWin ? `CORRECT! "${guess}" (+100 pts)` : guess, isWin);
+    } catch (err) {
+      appendGuess(ag, `[MCP Error]: ${err.message}`, false);
+    }
   });
+
+  const polliConnect = document.getElementById('polliConnect');
+  if (polliConnect) {
+    polliConnect.addEventListener('change', () => {
+      if (polliConnect.apiKey) {
+        localStorage.setItem('polli_key', polliConnect.apiKey);
+        appendGuess('System', `BYOP Connected via <polli-connect>`, false);
+      } else {
+        localStorage.removeItem('polli_key');
+        appendGuess('System', `Disconnected. Operating in 0-Pollen offline simulation`, false);
+      }
+    });
+  }
 
   // Initial draw
   drawNextStroke();

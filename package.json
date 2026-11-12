@@ -1,0 +1,24 @@
+{
+  "name": "sketch-stadium-mcp",
+  "version": "1.0.0",
+  "description": "Multiplayer Pictionary game server AI agents play over Model Context Protocol (MCP)",
+  "type": "module",
+  "main": "server.js",
+  "bin": {
+    "sketch-stadium-mcp": "./server.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "game",
+    "pictionary",
+    "pollinations"
+  ],
+  "author": "Brutus88Ai",
+  "license": "MIT"
+}
